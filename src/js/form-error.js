@@ -95,8 +95,10 @@ class FormError {
             }
 
             this._controls.forEach(c => {
-                if(!c.checkValidity())
-                    $(c).data('feedback').innerText = c.validationMessage
+                if(!c.checkValidity()){
+                    if($(c).data('feedback'))
+                        $(c).data('feedback').innerText = c.validationMessage
+                }
             })
 
             this._element.classList.add('was-validated')
