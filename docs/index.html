@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/themes/prism.min.css">
+
+    <title>Bootstrap Form Error</title>
+
+    <style>
+        h1{ margin-top: 80px; }
+        h2,h3{ margin-top: 40px; }
+        .example{ border: 4px solid #eee; margin-bottom:30px;}
+        .example-preview{ padding: 1.5rem; }
+        .example > pre{ border-top: 4px solid #eee;margin:0; }
+        .highlihgt-grid .row + .row{ margin-top: 1rem;}
+        .highlihgt-grid [class^="col-"]{
+            padding-top: .75rem;
+            padding-bottom: .75rem;
+            background-color: rgba(86,61,124,.15);
+            border: 1px solid rgba(86,61,124,.2);
+        }
+    </style>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-1746437125043617",
+              enable_page_level_ads: true
+         });
+    </script>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+        <a class="navbar-brand" href="#">Bootstrap Form Error</a>
+        <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/iqbalfn/bootstrap-form-error">Github</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/iqbalfn/bootstrap-form-error/archive/master.zip">Download</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <h1>Form Error</h1>
+                <p class="lead">Show form control error message provided by browser or custom as bootstrap way.</p>
+
+                <section>
+                    <h2>Examples</h2>
+
+                    <article>
+                        <section>
+                            <h3>Default</h3>
+                            <article>
+                                <p>Below example show form error message from browser as of bootstrap ways. Try input invalid email addres, or leave them empty, and submit the form. The error message will updated while you're typing if the form already submited once.</p>
+                                <div class="example">
+                                    <div class="example-preview source-code" data-hl="html">
+                                        <form method="POST" id="form-one">
+                                            <div class="form-group">
+                                                <label for="input-email">Your Email Address</label>
+                                                <input type="email" id="input-email" placeholder="Your Email" required class="form-control">
+                                                <div class="invalid-feedback"></div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="input-age">Your Age</label>
+                                                <input type="number" id="input-age" placeholder="Your Age" required class="form-control" min="16" max="74">
+                                                <div class="invalid-feedback"></div>
+                                            </div>
+                                            <div class="text-right">
+                                                <button class="btn btn-primary">Send</button>
+                                            </div>
+                                        </form>
+
+                                        <script>
+                                            document.addEventListener('DOMContentLoaded', function(){
+                                                $('#form-one').formerror()
+                                            }, false)
+                                        </script>
+                                    </div>
+                                </div>
+                            </article>
+                        </section>
+
+                        <section>
+                            <h3>Custom Error</h3>
+                            <article>
+                                <p>If you've js validator, you may want to implement the error message with <code>setCustomValidity</code> method on the form control. Try put anything except <code>iqbal</code> in the form below and press <code>Send</code> button:</p>
+                                <div class="example">
+                                    <div class="example-preview source-code" data-hl="html">
+                                        <form method="POST" id="form-two">
+                                            <div class="form-group">
+                                                <label for="input-name">Your Name</label>
+                                                <input type="text" id="input-name" placeholder="Your Name" required class="form-control">
+                                                <div class="invalid-feedback"></div>
+                                            </div>
+                                            <div class="text-right">
+                                                <button class="btn btn-primary">Send</button>
+                                            </div>
+                                        </form>
+
+                                        <script>
+                                            document.addEventListener('DOMContentLoaded', function(){
+                                                $('#form-two').formerror()
+
+                                                $('#input-name').on('input', function(){
+                                                    if(this.value == 'iqbal')
+                                                        this.setCustomValidity('')
+                                                    else
+                                                        this.setCustomValidity('It accept only `iqbal` value.')
+                                                    this.checkValidity()
+                                                })
+                                            }, false)
+                                        </script>
+                                    </div>
+                                </div>
+                            </article>
+                        </section>
+                    </article>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.16.0/prism.min.js" data-manual></script>
+    <script src="js/source.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="js/bootstrap-form-error.js"></script>
+</body>
+</html>
