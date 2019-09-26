@@ -1,5 +1,5 @@
 /*!
-  * Bootstrap Form Error v0.0.1 (https://iqbalfn.github.io/bootstrap-form-error/)
+  * Bootstrap Form Error v1.0.1 (https://iqbalfn.github.io/bootstrap-form-error/)
   * Copyright 2019 Iqbal Fauzi
   * Licensed under MIT (https://github.com/iqbalfn/bootstrap-form-error/blob/master/LICENSE)
   */
@@ -75,12 +75,18 @@
       this._controls.forEach(function (e) {
         var $e = $(e);
         var feedback = $e.next('.invalid-feedback').get(0);
+
+        if (!feedback) {
+          var parent = $e.closest('.form-group');
+          feedback = parent.find('.invalid-feedback').get(0);
+        }
+
         if (feedback) $e.data('feedback', feedback);
         $e.on(Event.INVALID_DATA_API, function (event) {
-          if (_this._wasValidated && e.validationMessage) $e.data('feedback').innerText = e.validationMessage;
+          if (_this._wasValidated && e.validationMessage && $e.data('feedback')) $e.data('feedback').innerText = e.validationMessage;
         });
         $e.on(Event.INPUT_DATA_API, function (event) {
-          if (_this._wasValidated && e.validationMessage) $e.data('feedback').innerText = e.validationMessage;
+          if (_this._wasValidated && e.validationMessage && $e.data('feedback')) $e.data('feedback').innerText = e.validationMessage;
         });
       });
     };
@@ -97,7 +103,9 @@
         }
 
         _this2._controls.forEach(function (c) {
-          if (!c.checkValidity()) $(c).data('feedback').innerText = c.validationMessage;
+          if (!c.checkValidity()) {
+            if ($(c).data('feedback')) $(c).data('feedback').innerText = c.validationMessage;
+          }
         });
 
         _this2._element.classList.add('was-validated');

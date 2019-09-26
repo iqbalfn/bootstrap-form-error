@@ -70,16 +70,22 @@ class FormError {
         this._controls.forEach(e => {
             let $e = $(e)
             let feedback = $e.next('.invalid-feedback').get(0)
+
+            if(!feedback){
+                let parent = $e.closest('.form-group');
+                feedback = parent.find('.invalid-feedback').get(0)
+            }
+
             if(feedback)
                 $e.data('feedback', feedback)
 
             $e.on(Event.INVALID_DATA_API, event => {
-                if(this._wasValidated && e.validationMessage)
+                if(this._wasValidated && e.validationMessage && $e.data('feedback'))
                     $e.data('feedback').innerText = e.validationMessage
             })
 
             $e.on(Event.INPUT_DATA_API, event => {
-                if(this._wasValidated && e.validationMessage)
+                if(this._wasValidated && e.validationMessage && $e.data('feedback'))
                     $e.data('feedback').innerText = e.validationMessage
             })
         })
